@@ -114,7 +114,7 @@
 
     watch(textError, () => { setTimeout(() => textError.value = '', 5000)})
 
-    const generateTrades = async (res) => {
+    const generateTrades = async (res:any) => {
         if(res.status){
             traders.value.set(res.result.address.base58, {
                 id: traders.value.size+1,
@@ -137,7 +137,7 @@
         }
     }
 
-    const sendUsdt = async (res) => {
+    const sendUsdt = async (res:any) => {
         if(res.status){
             getInfo()
             traders.value.get(res.to).balanceUsdt += defaultAmount
@@ -147,7 +147,7 @@
         }
     }
 
-    const sendTrx = async (res) => {
+    const sendTrx = async (res:any) => {
         if(res.status){
             getInfo()
             traders.value.get(res.to).balanceTrx += defaultAmount
@@ -157,7 +157,7 @@
         }
     }
 
-    const distribute = async (res) => {
+    const distribute = async (res:any) => {
         if(res.status){
             getInfo()
             traders.value.get(res.address).balanceUsdt = 0
