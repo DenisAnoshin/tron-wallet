@@ -35,17 +35,19 @@
                 <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Трейдер <EventButton v-if="!firstLoading" label="+" uri="/generateaddress/" @event="generateTrades"/></th>
-                        <th scope="col">USDT</th>
-                        <th scope="col">TRX</th>
-                        <th scope="col">Распределить</th>
+                        <th >#</th>
+                        <th >Трейдер <EventButton v-if="!firstLoading" label="+" uri="/generateaddress/" @event="generateTrades"/></th>
+                        <th >Private</th>
+                        <th >USDT</th>
+                        <th >TRX</th>
+                        <th >Распределить</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="[key, item] in traders" :key="item.id">
                             <th>{{ item.id }}</th>
-                            <td><AddressLink :link="key" route="address"/></td>
+                            <td>{{ key }}</td>
+                            <td style="word-break: break-all;">{{ item.privateKey }}</td>
                             <td>
                                 {{ item.balanceUsdt }} 
                                 <EventButton :label="`+${defaultAmount}`" uri="/sendusdt/" @event="sendUsdt" :body="{to: key, amount: defaultAmount}"/>
